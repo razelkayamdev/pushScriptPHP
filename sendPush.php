@@ -26,10 +26,20 @@ if (!$fp)
 echo 'Connected to APNS' . PHP_EOL;
 
 // Create the payload body
+
+// Regular push
+// $body['aps'] = array(
+// 	'alert' => $message,
+// 	'sound' => 'default',
+// 	'content-available' => '1'
+// 	);
+
+
+// Silent Push
 $body['aps'] = array(
-	'alert' => $message,
-	'sound' => 'default'
-	);
+'content-available' => '1'
+);
+$body['p'] = 188522;
 
 // Encode the payload as JSON
 $payload = json_encode($body);
